@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sample App - Leaflet | GeoJSON | Pathfinder</title>
+
+    <link rel="stylesheet" href="./res/leaflet.css" />
+    <style>
+        html,
+        body {
+            margin: 0 auto; padding: 5px; font-family: Helvetica; font-size: 0.9em; background-color: #ededed;
+        }
+        #map {
+            border: 2px solid #000; width: 50%; height: 800px;
+        }
+        #nota{
+            float:right; width: 45%;
+        }
+        .btnimage{
+            box-shadow:inset 0px 1px 3px 0px #91b8b3; background:linear-gradient(to bottom, #768d87 5%, #6c7c7c 100%); background-color:#768d87; border-radius:5px; border:1px solid #566963; display:inline-block; cursor:pointer;            
+        }
+        .customMula {
+            cursor: url(./res/mula.png) 19 59, auto;
+        }
+        .customTamat {
+            cursor: url(./res/tamat.png) 19 59, auto;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div id="nota">
+        <h1>LeafletJS | GeoJSON | Pathfinder</h1>
+        
+        <h3>Koordinat</h3>
+        <p>Klik pada map untuk data</p>
+        <p>Latitud : <span id="click_lat">&nbsp;</span> | Longitud <span id="click_long">&nbsp;</span></p>
+        <hr/>
+        <h3>GeoJSON</h3>
+        
+        <p>Klik untuk load path:</p>
+        <button id="path2">Path 1 - Muar Simple</button><br>
+        <button id="path3">Path 2 - Muar Large</button><br>
+        <button id="path1">Custom Path</button><p id="custompathalert">&nbsp;</p>
+        <p>Masukkan data GeoJSON di bawah, pehtu tekan Custom Path - boleh buat di <a href="https://geojson.io/">geojson.io/</a></p>
+        <textarea id="custompath" cols="50" rows="5"></textarea>
+
+        <p>Untuk create path cara lukis, boleh refer example kat sini: <a href="https://leaflet.github.io/Leaflet.draw/docs/examples/full.html">leaflet.github.io</a>. Maleh nak buat</p>
+
+        <hr/>    
+        <h3>Pathfinder</h3>
+
+        <p>Load path kat atas dulu. Klik pada butang dan kemudian map untuk tandakan marker mula &amp; tamat pada mana-mana path atau drag marker pada map:</p>
+        <input type="image" id="setmulamarker" src="./res/mula.png" class="btnimage" />
+        <input type="image" id="settamatmarker" src="./res/tamat.png" class="btnimage" />
+
+        <p>Klik untuk hasilkan shortest route antara mula dan tamat (kadar precision: 1e-3):</p>
+        <button id="ciptaroute">Cipta route</button>
+        <p id="hasilpath">&nbsp;</p>
+        <p style="font-size: 0.7em;">Konstabel Piksel &copy; 2021</p>
+
+    </div>
+    <div id="map"></div>
+
+</body>
+<script src="./res/leaflet.js"></script>
+<script src="./res/bundle.min.js"></script>
+</html>
